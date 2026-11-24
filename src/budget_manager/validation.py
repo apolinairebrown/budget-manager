@@ -103,3 +103,26 @@ def validate_transaction(raw: dict, row: int | None = None) -> Transaction:
         amount=amount,
         currency=currency,
     )
+
+
+def validate_filters(
+    kind: str | None = None, category: str | None = None
+) -> tuple[str | None, str | None]:
+    """Normalize and check optional list filters, using the same rules as above.
+
+    Returns (kind, category) in lowercase, with None for "no filter".
+    Raises ValidationError if a filter value is not allowed.
+    """
+    if kind is not None:
+        kind = kind.strip().lower()
+        if kind not in ALLOWED_KINDS:
+            raise ValidationError(
+                f"kind filter must be one of {sorted(ALLOWED_KINDS)}, got '{kind}'."
+            )
+    if category is not None:
+        category = category.strip().lower()
+        if category not in ALLOWED_CATEGORIES:
+            raise ValidationError(
+                f"unknown category '{category}'. Allowed: {sorted(ALLOWED_CATEGORIES)}."
+            )
+    return kind, category

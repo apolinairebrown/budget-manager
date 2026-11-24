@@ -18,5 +18,11 @@ I made all decisions about the project's policies. The AI presented the options 
 - **Duplicate IDs:** checked in the service layer when adding, not on load.
 - **Missing data file:** an error, not an empty list.
 - **Saved amounts:** written with 2 decimals (e.g. 18.50).
+- **Adding:** returns a new list instead of changing the existing one.
+- **IDs when adding:** always auto-generated (highest number + 1).
+- **List order:** sorted by date (oldest first), then by id.
+- **Filters:** normalized and checked with the same rules as validation (unknown values give an error).
+- **Summary:** total income, total expenses, balance and per-category totals, rounded to 2 decimals.
+- **Duplicate ID error:** reuses ValidationError.
 
 I read through and tested all AI-written code before committing it.
