@@ -1,4 +1,4 @@
-# Budget Manager (Release 1)
+# Budget Manager
 
 A command-line personal budget manager: add, list and summarize income and expenses, saved to a CSV file. Every input is validated, and invalid data is rejected with a clear message instead of being silently fixed.
 
