@@ -24,5 +24,10 @@ I made all decisions about the project's policies. The AI presented the options 
 - **Filters:** normalized and checked with the same rules as validation (unknown values give an error).
 - **Summary:** total income, total expenses, balance and per-category totals, rounded to 2 decimals.
 - **Duplicate ID error:** reuses ValidationError.
+- **How to run:** a small launcher in the project root (`python budget.py ...`).
+- **Data file:** `data/transactions.csv` by default (`--file` to choose another), keeping the sample data untouched.
+- **Adding:** date defaults to today, currency defaults to EUR.
+- **List output:** an aligned table.
+- **Python version:** requires Python 3.10+ (no backport to 3.9).
 
 I read through and tested all AI-written code before committing it.
