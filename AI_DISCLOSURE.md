@@ -10,7 +10,7 @@ I made all decisions about the project's policies. The AI presented the options 
 - **Whitespace:** leading and trailing spaces are stripped before checking.
 - **Capitalization:** normalized (kind and category to lowercase, currency to uppercase).
 - **Dates:** strict `YYYY-MM-DD` only.
-- **Amounts:** must be a finite number greater than 0 ("inf" and "nan" are rejected).
+- **Amounts:** must be a finite number greater than 0 ("inf" and "nan" are rejected), with at most 2 decimals (rejected rather than rounded, so no data is silently changed).
 - **IDs:** must be "T" followed by digits, e.g. T001.
 - **File format:** CSV.
 - **Invalid rows on load:** every row is checked, all errors are reported together, and nothing is loaded.

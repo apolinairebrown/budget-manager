@@ -4,7 +4,8 @@ Design choices (Release 1):
 - Leading/trailing spaces are stripped before checking.
 - Case is normalized: kind and category are lowercased, currency is uppercased.
 - Dates must be exactly YYYY-MM-DD (the compact form "20260904" is rejected).
-- Amounts must be finite numbers > 0 ("inf" and "nan" are rejected).
+- Amounts must be finite numbers > 0 ("inf" and "nan" are rejected) with at most
+  2 decimals, so saving and loading never changes an amount.
 - IDs must be "T" followed by digits, e.g. T001.
 - Duplicate IDs are checked in services.py, because this function sees one row at a time.
 """
@@ -83,6 +84,8 @@ def validate_transaction(raw: dict, row: int | None = None) -> Transaction:
         fail(f"amount must be a finite number, got '{clean['amount']}'.")
     if amount <= 0:
         fail("amount must be > 0.")
+    if round(amount, 2) != amount:
+        fail(f"amount must have at most 2 decimals, got '{clean['amount']}'.")
 
     # 7. currency: normalized to uppercase, must be allowed.
     currency = clean["currency"].upper()
