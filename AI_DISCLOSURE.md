@@ -12,5 +12,11 @@ I made all decisions about the project's policies. The AI presented the options 
 - **Dates:** strict `YYYY-MM-DD` only.
 - **Amounts:** must be a finite number greater than 0 ("inf" and "nan" are rejected).
 - **IDs:** must be "T" followed by digits, e.g. T001.
+- **File format:** CSV.
+- **Invalid rows on load:** every row is checked, all errors are reported together, and nothing is loaded.
+- **Row numbers in errors:** match the line number in the file (the header is line 1).
+- **Duplicate IDs:** checked in the service layer when adding, not on load.
+- **Missing data file:** an error, not an empty list.
+- **Saved amounts:** written with 2 decimals (e.g. 18.50).
 
 I read through and tested all AI-written code before committing it.
